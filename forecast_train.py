@@ -6,6 +6,16 @@ if not "Informer" in sys.path:
 from Informer.exp.exp_informer import Exp_Informer as Exp
 import torch
 from config import args, setting
+import argparse
+
+arg_parser = argparse.ArgumentParser()
+
+arg_parser.add_argument("--train_epochs", type=int, default=6)
+
+parsed_args = arg_parser.parse_args()
+
+for key, value in vars(parsed_args).items():
+    setattr(args, key, value)
 
 print("Args in experiment:")
 print(args)

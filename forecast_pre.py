@@ -19,8 +19,6 @@ exp.predict(setting, True)
 # the prediction will be saved in ./results/{setting}/real_prediction.npy
 prediction = np.load("./results/" + setting + "/real_prediction.npy")
 
-print(prediction)
-
 plt.figure()
 plt.plot(prediction[0, :, -1])
 plt.show()
@@ -36,6 +34,3 @@ plt.show()
 # plt.plot(preds[0, :, -1], label="Prediction")
 # plt.legend()
 # plt.show()
-
-# [samples, pred_len, dimensions]
-# preds.shape, trues.shape
