@@ -48,7 +48,7 @@ args.train_epochs = 6
 args.patience = 3
 args.des = "exp"
 
-args.use_gpu = True if torch.cuda.is_available() else False
+args.use_gpu = True if torch.cuda.is_available() or torch.mps.is_available() else False
 args.gpu = 0
 
 args.use_multi_gpu = False

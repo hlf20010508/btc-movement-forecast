@@ -21,4 +21,7 @@ exp.train(setting)
 print(">>>>>>>testing : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<".format(setting))
 exp.test(setting)
 
-torch.cuda.empty_cache()
+if torch.cuda.is_available():
+    torch.cuda.empty_cache()
+if torch.mps.is_available():
+    torch.mps.empty_cache()
