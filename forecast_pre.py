@@ -12,8 +12,6 @@ import matplotlib.pyplot as plt
 # Prediction is a sequence which is adjacent to the last date of the data, and does not exist in the data
 # If you want to get more information about prediction, you can refer to code `exp/exp_informer.py function predict()` and `data/data_loader.py class Dataset_Pred`
 
-args.inverse = True
-
 exp = Exp(args)
 
 exp.predict(setting, True)
