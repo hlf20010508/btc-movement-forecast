@@ -40,7 +40,7 @@ args.padding = 0
 args.batch_size = 32
 args.learning_rate = 0.0001
 args.loss = "mse"
-args.lradj = "const"
+args.lradj = "type1"
 args.use_amp = False  # whether to use automatic mixed precision training
 
 args.num_workers = 0

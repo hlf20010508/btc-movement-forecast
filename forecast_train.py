@@ -11,6 +11,8 @@ import argparse
 arg_parser = argparse.ArgumentParser()
 
 arg_parser.add_argument("--train_epochs", type=int, default=6)
+arg_parser.add_argument("--lradj", type=str, default="type1")
+arg_parser.add_argument("--patience", type=int, default=20)
 
 parsed_args = arg_parser.parse_args()
 
