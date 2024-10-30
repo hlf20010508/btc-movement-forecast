@@ -7,6 +7,7 @@ name = "pypi"
 numpy = "*"
 torch = "*"
 pandas = "*"
+matplotlib = "*"
 
 [dev-packages]
 
