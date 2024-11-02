@@ -225,7 +225,9 @@ class Exp_Informer(Exp_Basic):
             adjust_learning_rate(model_optim, epoch + 1, self.args)
 
         best_model_path = path + "/" + "checkpoint.pth"
-        self.model.load_state_dict(torch.load(best_model_path))
+        self.model.load_state_dict(
+            torch.load(best_model_path, map_location=self.device)
+        )
 
         return self.model
 
@@ -275,7 +277,9 @@ class Exp_Informer(Exp_Basic):
         if load:
             path = os.path.join(self.args.checkpoints, setting)
             best_model_path = path + "/" + "checkpoint.pth"
-            self.model.load_state_dict(torch.load(best_model_path))
+            self.model.load_state_dict(
+                torch.load(best_model_path, map_location=self.device)
+            )
 
         self.model.eval()
 
