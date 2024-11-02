@@ -18,13 +18,15 @@ exp = Exp(args)
 exp.predict(setting, True)
 
 # the prediction will be saved in ./results/{setting}/real_prediction.npy
-prediction = np.load("./results/" + setting + "/real_prediction.npy")
+prediction = np.load("./results/" + setting + "/real_prediction.npy").squeeze()
 true = pd.read_csv("./data/btcusdt_valid.csv")["Close"]
-length = max(len(true), len(prediction))
+
+length = min(len(true), len(prediction))
 
 plt.figure()
 plt.plot(true[:length], label="Truth")
-plt.plot(prediction[0, :, length], label="Prediction")
+plt.plot(prediction[:length], label="Prediction")
+plt.legend()
 plt.show()
 
 # When we finished exp.train(setting) and exp.test(setting), we will get a trained model and the results of test experiment
