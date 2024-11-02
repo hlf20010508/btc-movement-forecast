@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
-def predict():
+def predict(args):
     exp = Exp(args)
 
     exp.predict(setting, True)
@@ -41,5 +41,5 @@ def show_test():
 
 
 if __name__ == "__main__":
-    predict()
+    predict(args)
     show_prediction()

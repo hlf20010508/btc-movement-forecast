@@ -3,7 +3,7 @@ import torch
 from config import args, setting
 
 
-def train():
+def train(args):
     print("Args in experiment:")
     print(args)
 
@@ -25,4 +25,4 @@ def train():
 
 
 if __name__ == "__main__":
-    train()
+    train(args)
