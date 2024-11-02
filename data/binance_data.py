@@ -38,5 +38,5 @@ btc_data.to_csv("data/btcusdt_train.csv", index=False)
 print("Saved data to data/btcusdt_train.csv")
 
 btc_data = get_market_data("BTCUSDT", Client.KLINE_INTERVAL_1HOUR, "10 DAY UTC")
-btc_data.to_csv("data/btcusdt_valid.csv")
+btc_data.to_csv("data/btcusdt_valid.csv", index=False)
 print("Saved data to data/btcusdt_valid.csv")

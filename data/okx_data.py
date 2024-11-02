@@ -39,5 +39,5 @@ btc_data.to_csv("data/btcusdt_train.csv", index=False)
 print("Saved data to data/btcusdt_train.csv")
 
 btc_data = get_market_data("BTC-USDT", "1H", now - timedelta(days=10))
-btc_data.to_csv("data/btcusdt_valid.csv")
+btc_data.to_csv("data/btcusdt_valid.csv", index=False)
 print("Saved data to data/btcusdt_valid.csv")
