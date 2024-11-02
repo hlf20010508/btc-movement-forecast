@@ -1,27 +1,28 @@
-import sys
-
-if not "Informer" in sys.path:
-    sys.path += ["Informer"]
-
 from Informer.exp.exp_informer import Exp_Informer as Exp
 import torch
 from config import args, setting
 
-print("Args in experiment:")
-print(args)
 
-# set experiments
-exp = Exp(args)
+def train():
+    print("Args in experiment:")
+    print(args)
 
-# train
-print(">>>>>>>start training : {}>>>>>>>>>>>>>>>>>>>>>>>>>>".format(setting))
-exp.train(setting)
+    # set experiments
+    exp = Exp(args)
 
-# test
-print(">>>>>>>testing : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<".format(setting))
-exp.test(setting)
+    # train
+    print(">>>>>>>start training : {}>>>>>>>>>>>>>>>>>>>>>>>>>>".format(setting))
+    exp.train(setting)
 
-if torch.cuda.is_available():
-    torch.cuda.empty_cache()
-if torch.mps.is_available():
-    torch.mps.empty_cache()
+    # test
+    print(">>>>>>>testing : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<".format(setting))
+    exp.test(setting)
+
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+    if torch.mps.is_available():
+        torch.mps.empty_cache()
+
+
+if __name__ == "__main__":
+    train()

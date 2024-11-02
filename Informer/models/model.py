@@ -1,12 +1,10 @@
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 
-from utils.masking import TriangularCausalMask, ProbMask
-from models.encoder import Encoder, EncoderLayer, ConvLayer, EncoderStack
-from models.decoder import Decoder, DecoderLayer
-from models.attn import FullAttention, ProbAttention, AttentionLayer
-from models.embed import DataEmbedding
+from Informer.models.encoder import Encoder, EncoderLayer, ConvLayer, EncoderStack
+from Informer.models.decoder import Decoder, DecoderLayer
+from Informer.models.attn import FullAttention, ProbAttention, AttentionLayer
+from Informer.models.embed import DataEmbedding
 
 
 class Informer(nn.Module):
