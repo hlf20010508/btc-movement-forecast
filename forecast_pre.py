@@ -7,6 +7,7 @@ from Informer.exp.exp_informer import Exp_Informer as Exp
 from config import args, setting
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
 
 # If you already have a trained model, you can set the arguments and model path, then initialize a Experiment and use it to predict
 # Prediction is a sequence which is adjacent to the last date of the data, and does not exist in the data
@@ -18,9 +19,12 @@ exp.predict(setting, True)
 
 # the prediction will be saved in ./results/{setting}/real_prediction.npy
 prediction = np.load("./results/" + setting + "/real_prediction.npy")
+true = pd.read_csv("./data/btcusdt_valid.csv")["Close"]
+length = max(len(true), len(prediction))
 
 plt.figure()
-plt.plot(prediction[0, :, -1])
+plt.plot(true[:length], label="Truth")
+plt.plot(prediction[0, :, length], label="Prediction")
 plt.show()
 
 # When we finished exp.train(setting) and exp.test(setting), we will get a trained model and the results of test experiment
