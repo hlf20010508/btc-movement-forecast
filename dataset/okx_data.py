@@ -1,7 +1,8 @@
 from okx.app import OkxSPOT
 import pandas as pd
 from datetime import datetime, timedelta
-from data.indicator import add_indicator
+from dataset.indicator import add_indicator
+import os
 
 
 market = OkxSPOT(key="", secret="", passphrase="").market
@@ -26,6 +27,9 @@ def get_market_data(symbol, interval, start, end=datetime.now()):
 
 
 def fetch():
+    if not os.path.exists("data"):
+        os.mkdir("data")
+
     now = datetime.now()
 
     print("Downloading BTCUSDT data...")

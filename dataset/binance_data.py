@@ -1,7 +1,8 @@
 import pandas as pd
 from binance.client import Client
 from binance.exceptions import BinanceAPIException
-from data.indicator import add_indicator
+from dataset.indicator import add_indicator
+import os
 
 try:
     client = Client()
@@ -27,6 +28,9 @@ def get_market_data(symbol, interval, start_str, end_str=None):
 
 
 def fetch():
+    if not os.path.exists("data"):
+        os.mkdir("data")
+
     print("Downloading BTCUSDT data...")
 
     btc_data = get_market_data(
