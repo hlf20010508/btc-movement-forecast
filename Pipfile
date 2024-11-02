@@ -4,12 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-numpy = "*"
+numpy = "==1.26.4"
 torch = "*"
 pandas = "*"
 matplotlib = "*"
+requests = "*"
+python-binance = "*"
+ta-lib = "*"
 
 [dev-packages]
-
-[requires]
-python_version = "3.9"
