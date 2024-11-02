@@ -1,11 +1,12 @@
 import pandas as pd
 from binance.client import Client
 from binance.exceptions import BinanceAPIException
-import indicator
+from indicator import add_indicator
 
 try:
     client = Client()
 except BinanceAPIException:
+    # volume will be very low
     client = Client(tld="us")
 
 
@@ -18,24 +19,11 @@ def get_market_data(symbol, interval, start_str, end_str=None):
         data.columns = ["date", "Open", "High", "Low", "Close", "Volume"]
 
         data["date"] = pd.to_datetime(data["date"], unit="ms")
-        # data = data.set_index("date")
 
         for col in ["Open", "High", "Low", "Close", "Volume"]:
             data[col] = pd.to_numeric(data[col])
 
         return data
-
-
-def add_indicator(data: pd.DataFrame):
-    indicator.ema(7, data)
-    indicator.ema(14, data)
-    indicator.ema(21, data)
-
-    indicator.rsi(7, data)
-    indicator.rsi(14, data)
-    indicator.rsi(21, data)
-
-    indicator.macd(data)
 
 
 print("Downloading BTCUSDT data...")

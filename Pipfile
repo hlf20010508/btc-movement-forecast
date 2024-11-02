@@ -11,5 +11,6 @@ matplotlib = "*"
 requests = "*"
 python-binance = "*"
 ta-lib = "*"
+okx = {git = "git+https://github.com/hlf20010508/okx.git"}
 
 [dev-packages]
