@@ -20,8 +20,8 @@ def train(args):
 
     if torch.cuda.is_available():
         torch.cuda.empty_cache()
-    if torch.mps.is_available():
-        torch.mps.empty_cache()
+    if torch.backends.mps.is_available():
+        torch.backends.mps.empty_cache()
 
 
 if __name__ == "__main__":

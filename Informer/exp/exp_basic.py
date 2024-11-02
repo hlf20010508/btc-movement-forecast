@@ -22,7 +22,7 @@ class Exp_Basic(object):
                 )
                 device = torch.device("cuda:{}".format(self.args.gpu))
                 print("Use GPU: cuda:{}".format(self.args.gpu))
-            elif torch.mps.is_available():
+            elif torch.backends.mps.is_available():
                 device = torch.device("mps")
                 print("Use GPU: MPS")
             else:
