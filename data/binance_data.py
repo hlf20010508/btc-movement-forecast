@@ -1,8 +1,12 @@
 import pandas as pd
 from binance.client import Client
+from binance.exceptions import BinanceAPIException
 import indicator
 
-client = Client()
+try:
+    client = Client()
+except BinanceAPIException:
+    client = Client(tld="us")
 
 
 def get_market_data(symbol, interval, start_str, end_str=None):
