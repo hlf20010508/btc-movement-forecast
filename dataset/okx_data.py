@@ -38,6 +38,8 @@ def fetch():
         "BTC-USDT", "1H", now - timedelta(days=365 * 4), now - timedelta(days=10)
     )
 
+    # btc_data = pd.read_csv("data/btcusdt.csv")
+
     add_indicator(btc_data)
     btc_data.dropna(inplace=True)
     btc_data.to_csv("data/btcusdt_train.csv", index=False)

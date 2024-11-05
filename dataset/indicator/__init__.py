@@ -1,5 +1,6 @@
 import pandas as pd
 import talib
+import requests
 
 
 def add_indicator(data: pd.DataFrame):
@@ -16,6 +17,8 @@ def add_indicator(data: pd.DataFrame):
     obv(data)
     bollinger(data)
     vegas(data)
+
+    fng(data)
 
 
 def ema(period: int, df: pd.DataFrame):
@@ -66,3 +69,17 @@ def vegas(df: pd.DataFrame):
     df["VEGAS-tunnel1-lower"] = talib.EMA(df["Close"], timeperiod=169)
     df["VEGAS-tunnel2-upper"] = talib.EMA(df["Close"], timeperiod=576)
     df["VEGAS-tunnel2-lower"] = talib.EMA(df["Close"], timeperiod=676)
+
+
+def fng(df: pd.DataFrame):
+    url = "https://api.alternative.me/fng/"
+    params = {"limit": 365 * 4, "format": "json", "date_format": "cn"}
+
+    response = requests.get(url, params)
+
+    data = response.json()["data"]
+
+    for item in data:
+        df.loc[df["Date"].astype(str).str.startswith(item["timestamp"]), "FNG"] = item[
+            "value"
+        ]
